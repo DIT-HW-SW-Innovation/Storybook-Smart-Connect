@@ -1,0 +1,180 @@
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  --menu-text-color: #161c27;
+  --menu-icon-filter: brightness(0) saturate(100%) invert(10%) sepia(15%) saturate(1240%) hue-rotate(183deg) brightness(93%) contrast(90%);
+  --menu-icon-selected-filter: brightness(0) saturate(100%) invert(7%) sepia(73%) saturate(3637%) hue-rotate(199deg) brightness(89%) contrast(105%);
+  --menu-hover-bg: rgba(0, 0, 0, 0.12);
+  --menu-pressed-bg: rgba(0, 0, 0, 0.16);
+  --menu-selected-bg: #d5e3ff;
+  --menu-selected-text: #001c3b;
+  --menu-disabled-opacity: 0.38;
+}
+
+.dropdown-container--dark {
+  --menu-text-color: #fbfbfc;
+  --menu-icon-filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(118%) hue-rotate(178deg) brightness(105%) contrast(97%);
+  --menu-icon-selected-filter: brightness(0) saturate(100%) invert(99%) sepia(2%) saturate(2245%) hue-rotate(179deg) brightness(109%) contrast(101%);
+  --menu-hover-bg: rgba(255, 255, 255, 0.08);
+  --menu-pressed-bg: rgba(255, 255, 255, 0.12);
+  --menu-selected-bg: #0b3c80;
+  --menu-selected-text: #f4f7ff;
+}
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: -30px;
+}
+
+.dropdown-trigger {
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  padding: 8px 16px;
+  text-decoration: underline;
+}
+
+.dropdown-trigger:hover {
+  color: #555ab9;
+}
+
+.dropdown-container--dark .dropdown-trigger {
+  color: #fbfbfc;
+}
+
+.dropdown-container--dark .dropdown-trigger:hover {
+  color: #d5d9ff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 20px 0px rgba(0, 0, 0, 0.1);
+  min-width: 212px;
+  max-width: 332px;
+  padding: 4px;
+  z-index: 1000;
+}
+
+.dropdown-menu--dark {
+  background: #2f323a;
+  box-shadow: 0px 6px 24px rgba(15, 17, 22, 0.35);
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-item:not(.menu-item--disabled):not(.menu-item--selected):hover {
+  background-color: var(--menu-hover-bg);
+}
+
+.menu-item:not(.menu-item--disabled):not(.menu-item--selected):active {
+  background-color: var(--menu-pressed-bg);
+}
+
+.menu-item-content {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.menu-item--android-ios {
+  height: 56px;
+  justify-content: center;
+}
+
+.menu-item--android-ios .menu-item-content {
+  height: 56px;
+}
+
+.menu-item-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.menu-item-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  filter: var(--menu-icon-filter);
+}
+
+.menu-item-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  font-family: 'Rookery New', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--menu-text-color);
+}
+
+.menu-item-text p {
+  margin: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.menu-separator {
+  background: #ded9d4;
+  height: 1px;
+  width: 100%;
+  flex-shrink: 0;
+  margin: 4px 0;
+}
+
+.dropdown-menu--dark .menu-separator {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.menu-item--selected {
+  background-color: var(--menu-selected-bg);
+}
+
+.menu-item--selected .menu-item-text {
+  color: var(--menu-selected-text);
+}
+
+.menu-item--selected .menu-item-icon img {
+  filter: var(--menu-icon-selected-filter, var(--menu-icon-filter));
+}
+
+.menu-item--disabled {
+  opacity: var(--menu-disabled-opacity);
+  pointer-events: none;
+}
+
