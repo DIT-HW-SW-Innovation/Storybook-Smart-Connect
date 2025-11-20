@@ -11,12 +11,12 @@ const meta = {
   argTypes: {
     buttonText: { control: 'text' },
     darkMode: { control: 'boolean' },
-    variant: { control: 'select', options: ['PC', 'Android', 'iOS'] },
+    variant: { control: 'select', options: ['Windows', 'Android', 'iOS'] },
   },
   args: {
     buttonText: 'Click me',
     darkMode: false,
-    variant: 'PC',
+    variant: 'Windows',
     onItemClick: fn(),
   },
 } satisfies Meta<typeof DropdownMenu>;
@@ -24,11 +24,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const PC: Story = {
+export const Windows: Story = {
   args: {
     buttonText: 'Click me',
     darkMode: false,
-    variant: 'PC',
+    variant: 'Windows',
   },
   render: (args) => ({
     components: { DropdownMenu },
@@ -54,11 +54,11 @@ export const PC: Story = {
   }),
 };
 
-export const PC_DarkMode: Story = {
+export const Windows_DarkMode: Story = {
   args: {
     buttonText: 'Click me',
     darkMode: true,
-    variant: 'PC',
+    variant: 'Windows',
   },
   render: (args) => ({
     components: { DropdownMenu },

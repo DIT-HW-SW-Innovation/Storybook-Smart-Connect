@@ -62,21 +62,21 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import './dropdown-menu.css';
 
-const img1 = "http://localhost:3845/assets/bb613a71598a9471658acedc84f40541221978c1.svg";
-const img2 = "http://localhost:3845/assets/e69baa7f21dac4bd50718e9a134c936dea8ab1f6.svg";
-const img3 = "http://localhost:3845/assets/65a88b5aab1e8151a788ac4c1a512eaa63ff704c.svg";
-const img4 = "http://localhost:3845/assets/31b6aa5b6bd4cb1cd23e2f9148b77665d3f081e1.svg";
+const img1 = "src/icons/notification_off.svg";
+const img2 = "src/icons/wallpaper.svg";
+const img3 = "src/icons/settings.svg";
+const img4 = "src/icons/link_off.svg";
 
 const props = withDefaults(
   defineProps<{
     buttonText?: string;
     darkMode?: boolean;
-    variant?: 'PC' | 'Android' | 'iOS';
+    variant?: 'Windows' | 'Android' | 'iOS';
   }>(),
   {
     buttonText: 'Click me',
     darkMode: false,
-    variant: 'PC',
+    variant: 'Windows',
   }
 );
 
