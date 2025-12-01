@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
 
 import DropdownMenu from './DropdownMenu.vue';
+import StoryWrapper from './StoryWrapper.vue';
 
 const meta = {
   title: 'Example/DropdownMenu',
@@ -17,7 +18,6 @@ const meta = {
     buttonText: 'Click me',
     darkMode: false,
     variant: 'Windows',
-    onItemClick: fn(),
   },
 } satisfies Meta<typeof DropdownMenu>;
 
@@ -31,25 +31,20 @@ export const Windows: Story = {
     variant: 'Windows',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };
@@ -61,25 +56,20 @@ export const Windows_DarkMode: Story = {
     variant: 'Windows',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };
@@ -91,25 +81,20 @@ export const Android: Story = {
     variant: 'Android',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };
@@ -121,25 +106,20 @@ export const Android_DarkMode: Story = {
     variant: 'Android',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };
@@ -151,25 +131,20 @@ export const IOS: Story = {
     variant: 'iOS',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };
@@ -181,25 +156,20 @@ export const IOS_DarkMode: Story = {
     variant: 'iOS',
   },
   render: (args) => ({
-    components: { DropdownMenu },
+    components: { DropdownMenu, StoryWrapper },
     setup() {
-      return { args };
+      const onItemClick = fn();
+      return { args, onItemClick };
     },
     template: `
-      <div
-        :style="{
-          padding: '40px',
-          minHeight: '250px',
-          background: args.darkMode ? '#0f1116' : '#f5f6fb'
-        }"
-      >
+      <StoryWrapper :dark-mode="args.darkMode">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
           :variant="args.variant"
-          @item-click="args.onItemClick"
+          @item-click="onItemClick"
         />
-      </div>
+      </StoryWrapper>
     `,
   }),
 };

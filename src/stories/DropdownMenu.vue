@@ -30,7 +30,7 @@
         >
           <div class="menu-item-content">
             <div class="menu-item-icon">
-              <img :src="item.icon" :alt="item.label" />
+              <Icon :name="item.icon" size="20" />
             </div>
             <div class="menu-item-text">
               <p>{{ item.label }}</p>
@@ -45,7 +45,7 @@
         >
           <div class="menu-item-content">
             <div class="menu-item-icon">
-              <img :src="separatorItem.icon" :alt="separatorItem.label" />
+              <Icon :name="separatorItem.icon" size="20" />
             </div>
             <div class="menu-item-text">
               <p>{{ separatorItem.label }}</p>
@@ -60,12 +60,9 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import Icon from '../components/Icon.vue';
+import type { IconName } from '../icons';
 import './dropdown-menu.css';
-
-const img1 = "src/icons/notification_off.svg";
-const img2 = "src/icons/wallpaper.svg";
-const img3 = "src/icons/settings.svg";
-const img4 = "src/icons/link_off.svg";
 
 const props = withDefaults(
   defineProps<{
@@ -80,23 +77,25 @@ const props = withDefaults(
   }
 );
 
+type MenuItem = { label: string; icon: IconName };
+
 const emit = defineEmits<{
-  (e: 'item-click', item: { label: string; icon: string }): void;
+  (e: 'item-click', item: MenuItem): void;
 }>();
 
 const isOpen = ref(false);
 const containerRef = ref<HTMLElement | null>(null);
 const isMobileVariant = computed(() => props.variant === 'Android' || props.variant === 'iOS');
 
-const menuItems = [
-  { label: 'Mute notifications', icon: img1 },
-  { label: 'Sync wallpaper', icon: img2 },
-  { label: 'Settings', icon: img3 },
+const menuItems: MenuItem[] = [
+  { label: 'Mute notifications', icon: 'notification_off' },
+  { label: 'Sync wallpaper', icon: 'wallpaper' },
+  { label: 'Settings', icon: 'settings' },
 ];
 
-const separatorItem = {
+const separatorItem: MenuItem = {
   label: 'Unpair device',
-  icon: img4,
+  icon: 'link_off',
 };
 
 const hasSeparator = true;
@@ -105,7 +104,7 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value;
 };
 
-const handleItemClick = (item: { label: string; icon: string }) => {
+const handleItemClick = (item: MenuItem) => {
   emit('item-click', item);
   isOpen.value = false;
 };
