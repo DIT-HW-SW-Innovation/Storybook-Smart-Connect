@@ -8,7 +8,7 @@
 .dropdown-wrapper {
   position: relative;
   display: inline-block;
-  margin-top: -30px;
+  margin-top: 0;
 }
 
 .dropdown-trigger {

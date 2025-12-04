@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, onMounted, watch, nextTick } from 'vue';
 import { iconRegistry, type IconName } from '../icons/registry';
 
 interface Props {
@@ -13,7 +13,11 @@ const props = withDefaults(defineProps<Props>(), {
   className: '',
 });
 
-const iconSvg = computed(() => iconRegistry[props.name]);
+const iconContainerRef = ref<HTMLElement | null>(null);
+const iconSvg = computed(() => {
+  const svg = iconRegistry[props.name];
+  return svg || '';
+});
 
 const sizeValue = computed(() => {
   if (typeof props.size === 'number') {
@@ -25,13 +29,47 @@ const sizeValue = computed(() => {
 const iconClass = computed(() => {
   return ['icon', props.className].filter(Boolean).join(' ');
 });
+
+// Safely inject SVG after component is mounted
+const injectIcon = () => {
+  if (!iconContainerRef.value) {
+    return;
+  }
+  
+  const svgContent = iconSvg.value;
+  
+  // Clear existing content
+  iconContainerRef.value.innerHTML = '';
+  
+  // Only inject if we have valid SVG content
+  if (svgContent && typeof svgContent === 'string' && svgContent.trim()) {
+    try {
+      iconContainerRef.value.innerHTML = svgContent;
+    } catch (error) {
+      console.warn(`Failed to render icon: ${props.name}`, error);
+    }
+  } else {
+    console.warn(`Icon not found or invalid: ${props.name}`);
+  }
+};
+
+onMounted(async () => {
+  // Use nextTick to ensure DOM is fully ready
+  await nextTick();
+  injectIcon();
+});
+
+// Watch for changes to icon name
+watch(() => props.name, () => {
+  injectIcon();
+}, { immediate: false });
 </script>
 
 <template>
   <span
+    ref="iconContainerRef"
     :class="iconClass"
     :style="{ width: sizeValue, height: sizeValue, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }"
-    v-html="iconSvg"
   />
 </template>
 

@@ -37,7 +37,7 @@ export const Windows: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
@@ -62,7 +62,7 @@ export const Windows_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
@@ -87,7 +87,7 @@ export const Android: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
@@ -112,7 +112,7 @@ export const Android_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
@@ -137,7 +137,7 @@ export const IOS: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
@@ -162,7 +162,7 @@ export const IOS_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode">
+      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
           :dark-mode="args.darkMode"
