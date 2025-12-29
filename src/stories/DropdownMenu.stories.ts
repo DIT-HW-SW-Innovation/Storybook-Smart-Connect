@@ -11,12 +11,12 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     buttonText: { control: 'text' },
-    darkMode: { control: 'boolean' },
+    theme: { control: 'select', options: ['light', 'dark'] },
     variant: { control: 'select', options: ['Windows', 'Android', 'iOS'] },
   },
   args: {
     buttonText: 'Click me',
-    darkMode: false,
+    theme: 'light',
     variant: 'Windows',
   },
 } satisfies Meta<typeof DropdownMenu>;
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 export const Windows: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: false,
+    theme: 'light',
     variant: 'Windows',
   },
   render: (args) => ({
@@ -37,10 +37,10 @@ export const Windows: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />
@@ -52,7 +52,7 @@ export const Windows: Story = {
 export const Windows_DarkMode: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: true,
+    theme: 'dark',
     variant: 'Windows',
   },
   render: (args) => ({
@@ -62,10 +62,10 @@ export const Windows_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />
@@ -77,7 +77,7 @@ export const Windows_DarkMode: Story = {
 export const Android: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: false,
+    theme: 'light',
     variant: 'Android',
   },
   render: (args) => ({
@@ -87,10 +87,10 @@ export const Android: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />
@@ -102,7 +102,7 @@ export const Android: Story = {
 export const Android_DarkMode: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: true,
+    theme: 'dark',
     variant: 'Android',
   },
   render: (args) => ({
@@ -112,10 +112,10 @@ export const Android_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />
@@ -127,7 +127,7 @@ export const Android_DarkMode: Story = {
 export const IOS: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: false,
+    theme: 'light',
     variant: 'iOS',
   },
   render: (args) => ({
@@ -137,10 +137,10 @@ export const IOS: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />
@@ -152,7 +152,7 @@ export const IOS: Story = {
 export const IOS_DarkMode: Story = {
   args: {
     buttonText: 'Click me',
-    darkMode: true,
+    theme: 'dark',
     variant: 'iOS',
   },
   render: (args) => ({
@@ -162,10 +162,10 @@ export const IOS_DarkMode: Story = {
       return { args, onItemClick };
     },
     template: `
-      <StoryWrapper :dark-mode="args.darkMode" :is-dropdown="true" height="400px">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :is-dropdown="true" height="400px">
         <DropdownMenu 
           :button-text="args.buttonText" 
-          :dark-mode="args.darkMode"
+          :theme="args.theme"
           :variant="args.variant"
           @item-click="onItemClick"
         />

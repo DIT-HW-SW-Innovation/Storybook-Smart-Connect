@@ -1,7 +1,7 @@
 <template>
   <div
     class="dropdown-container"
-    :class="{ 'dropdown-container--dark': darkMode }"
+    :class="{ 'dropdown-container--dark': theme === 'dark' }"
   >
     <div ref="containerRef" class="dropdown-wrapper">
       <button 
@@ -15,7 +15,7 @@
         v-if="isOpen" 
         class="dropdown-menu"
         :class="{ 
-          'dropdown-menu--dark': darkMode,
+          'dropdown-menu--dark': theme === 'dark',
           'dropdown-menu--android-ios': isMobileVariant
         }"
         @click.stop
@@ -67,12 +67,12 @@ import './dropdown-menu.css';
 const props = withDefaults(
   defineProps<{
     buttonText?: string;
-    darkMode?: boolean;
+    theme?: 'light' | 'dark';
     variant?: 'Windows' | 'Android' | 'iOS';
   }>(),
   {
     buttonText: 'Click me',
-    darkMode: false,
+    theme: 'light',
     variant: 'Windows',
   }
 );

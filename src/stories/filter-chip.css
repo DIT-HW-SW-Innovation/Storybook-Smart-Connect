@@ -1,0 +1,105 @@
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 62.4375rem;
+  border: 0.0625rem solid #ded9d4;
+  background: #ffffff;
+  font-family: 'Rookery New', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1rem;
+  letter-spacing: 0.03125rem;
+  color: rgba(95, 94, 96, 1); /* Colors/Surfaces/On Surface Variant */
+  cursor: pointer;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.filter-chip__image {
+  object-fit: cover;
+  border-radius: 0.125rem;
+  flex-shrink: 0;
+}
+
+.filter-chip__icon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.filter-chip__icon :deep(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+.filter-chip__icon {
+  color: inherit;
+}
+
+.filter-chip__text {
+  white-space: nowrap;
+}
+
+/* Dark Mode */
+.filter-chip--dark {
+  background: #2f323a;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fbfbfc;
+}
+
+
+/* Stages */
+.filter-chip--enabled {
+  /* Default state - already defined above */
+}
+
+.filter-chip--hovered {
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 29, 53, 1); /* Colors/Accents/On Primary Container */
+}
+
+.filter-chip--dark.filter-chip--hovered {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.filter-chip--selected {
+  border-color: transparent;
+  background: #d5e3ff;
+  color: rgba(0, 29, 53, 1); /* Colors/Accents/On Primary Container */
+}
+
+.filter-chip--dark.filter-chip--selected {
+  border-color: transparent;
+  background: rgba(213, 227, 255, 0.2);
+  color: #d6e3ff;
+}
+
+/* Hover states */
+.filter-chip:hover:not(.filter-chip--selected) {
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 29, 53, 1); /* Colors/Accents/On Primary Container */
+}
+
+.filter-chip--dark:hover:not(.filter-chip--selected) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Variants */
+.filter-chip--text-only {
+  padding: 0.5rem 1rem;
+}
+
+.filter-chip--png-text {
+  padding: 0.12rem 1rem 0.12rem 0.69rem;
+  gap: 0.25rem;
+}
+
+.filter-chip--svg-text {
+  padding: 0.5rem 1rem 0.5rem 0.69rem;
+}
+
