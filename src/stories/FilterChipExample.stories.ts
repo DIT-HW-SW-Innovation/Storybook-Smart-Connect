@@ -71,7 +71,7 @@ export const Example: Story = {
     imageSrc: 'lenovo_tabp12.png',
     iconName: 'menu',
   },
-  render: () => ({
+  render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
       // Content for each chip - EDIT THESE VALUES:
@@ -150,6 +150,7 @@ export const Example: Story = {
       };
       
       return { 
+        args,
         chips, 
         allDevicesSelected, 
         selectedPngChips,
@@ -162,7 +163,7 @@ export const Example: Story = {
       };
     },
     template: `
-      <StoryWrapper :dark-mode="false">
+      <StoryWrapper :dark-mode="args.theme === 'dark'" :large="true">
         <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
           <!-- First row: 1 text-only + 3 png-text -->
           <div style="display: flex; gap: 0.5rem; align-items: center;">
@@ -170,7 +171,7 @@ export const Example: Story = {
               :text="chips.row1.textOnly.text"
               variant="text-only"
               :stage="allDevicesSelected ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               @click="handleAllDevicesClick"
             />
             <FilterChip
@@ -179,7 +180,7 @@ export const Example: Story = {
               :text="chip.text"
               variant="png-text"
               :stage="selectedPngChips[index] ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               :image-src="chip.imageSrc"
               @click="handlePngChipClick(index)"
             />
@@ -191,7 +192,7 @@ export const Example: Story = {
               :text="chips.row2.textOnly.text"
               variant="text-only"
               :stage="allFilesSelected ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               @click="handleAllFilesClick"
             />
             <FilterChip
@@ -200,7 +201,7 @@ export const Example: Story = {
               :text="chip.text"
               variant="svg-text"
               :stage="selectedSvgChips[index] ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               :icon-name="chip.iconName"
               @click="handleSvgChipClick(index)"
             />

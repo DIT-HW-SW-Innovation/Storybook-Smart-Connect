@@ -3,7 +3,8 @@
     class="story-wrapper"
     :class="{ 
       'story-wrapper--dark': darkMode,
-      'story-wrapper--dropdown': isDropdown
+      'story-wrapper--dropdown': isDropdown,
+      'story-wrapper--large': large
     }"
     :style="dropdownStyle"
   >
@@ -19,11 +20,13 @@ const props = withDefaults(
     darkMode?: boolean;
     isDropdown?: boolean;
     height?: string;
+    large?: boolean;
   }>(),
   {
     darkMode: false,
     isDropdown: false,
     height: 'auto',
+    large: false,
   }
 );
 
@@ -55,6 +58,13 @@ const dropdownStyle = computed(() => {
 .story-wrapper--dropdown {
   align-items: flex-start;
   padding-top: 40px;
+}
+
+.story-wrapper--large {
+  min-width: 800px;
+  min-height: 200px;
+  align-items: flex-start;
+  padding: 60px;
 }
 </style>
 

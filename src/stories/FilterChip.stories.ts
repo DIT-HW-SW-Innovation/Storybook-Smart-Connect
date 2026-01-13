@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { ref } from 'vue';
+import { ref, reactive, watch } from 'vue';
 
 import FilterChip from './FilterChip.vue';
 import StoryWrapper from './StoryWrapper.vue';
@@ -50,17 +50,43 @@ export const PNGText_Light_Enabled: Story = {
     text: 'Changeable Text',
     variant: 'png-text',
     stage: 'enabled',
-    theme: 'light',
     imageSrc: 'lenovo_tabp12.png',
   },
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -82,17 +108,43 @@ export const PNGText_Light_Hovered: Story = {
     text: 'Changeable Text',
     variant: 'png-text',
     stage: 'hovered',
-    theme: 'light',
     imageSrc: 'lenovo_tabp12.png',
   },
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -114,17 +166,43 @@ export const PNGText_Light_Selected: Story = {
     text: 'Changeable Text',
     variant: 'png-text',
     stage: 'selected',
-    theme: 'light',
     imageSrc: 'lenovo_tabp12.png',
   },
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -152,11 +230,38 @@ export const PNGText_Dark_Enabled: Story = {
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -184,11 +289,38 @@ export const PNGText_Dark_Hovered: Story = {
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -216,11 +348,38 @@ export const PNGText_Dark_Selected: Story = {
   render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
+      // Make args reactive
+      const reactiveArgs = reactive({ ...args });
+      
       // Map image name string to actual image import
-      const mappedImageSrc = typeof args.imageSrc === 'string' && args.imageSrc in images
-        ? images[args.imageSrc as keyof typeof images]
-        : args.imageSrc;
-      return { args: { ...args, imageSrc: mappedImageSrc } };
+      const mappedImageSrc = typeof reactiveArgs.imageSrc === 'string' && reactiveArgs.imageSrc in images
+        ? images[reactiveArgs.imageSrc as keyof typeof images]
+        : reactiveArgs.imageSrc;
+      reactiveArgs.imageSrc = mappedImageSrc;
+      
+      // Watch for changes from Storybook controls and update reactive args
+      watch(() => args.theme, (newTheme) => {
+        reactiveArgs.theme = newTheme;
+      });
+      watch(() => args.text, (newText) => {
+        reactiveArgs.text = newText;
+      });
+      watch(() => args.variant, (newVariant) => {
+        reactiveArgs.variant = newVariant;
+      });
+      watch(() => args.stage, (newStage) => {
+        reactiveArgs.stage = newStage;
+      });
+      watch(() => args.imageSrc, (newImageSrc) => {
+        reactiveArgs.imageSrc = typeof newImageSrc === 'string' && newImageSrc in images
+          ? images[newImageSrc as keyof typeof images]
+          : newImageSrc;
+      });
+      watch(() => args.iconName, (newIconName) => {
+        reactiveArgs.iconName = newIconName;
+      });
+      
+      return { args: reactiveArgs };
     },
     template: `
       <StoryWrapper :dark-mode="args.theme === 'dark'">
@@ -239,7 +398,10 @@ export const PNGText_Dark_Selected: Story = {
 
 // Example: FilterChip Usage
 export const Example: Story = {
-  render: () => ({
+  args: {
+    theme: 'light',
+  },
+  render: (args) => ({
     components: { FilterChip, StoryWrapper },
     setup() {
       // Content for each chip - EDIT THESE VALUES:
@@ -318,6 +480,7 @@ export const Example: Story = {
       };
       
       return { 
+        args,
         chips, 
         allDevicesSelected, 
         selectedPngChips,
@@ -330,7 +493,7 @@ export const Example: Story = {
       };
     },
     template: `
-      <StoryWrapper :dark-mode="false">
+      <StoryWrapper :dark-mode="args.theme === 'dark'">
         <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
           <!-- First row: 1 text-only + 3 png-text -->
           <div style="display: flex; gap: 0.5rem; align-items: center;">
@@ -338,7 +501,7 @@ export const Example: Story = {
               :text="chips.row1.textOnly.text"
               variant="text-only"
               :stage="allDevicesSelected ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               @click="handleAllDevicesClick"
             />
             <FilterChip
@@ -347,7 +510,7 @@ export const Example: Story = {
               :text="chip.text"
               variant="png-text"
               :stage="selectedPngChips[index] ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               :image-src="chip.imageSrc"
               @click="handlePngChipClick(index)"
             />
@@ -359,7 +522,7 @@ export const Example: Story = {
               :text="chips.row2.textOnly.text"
               variant="text-only"
               :stage="allFilesSelected ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               @click="handleAllFilesClick"
             />
             <FilterChip
@@ -368,7 +531,7 @@ export const Example: Story = {
               :text="chip.text"
               variant="svg-text"
               :stage="selectedSvgChips[index] ? 'selected' : 'enabled'"
-              theme="light"
+              :theme="args.theme"
               :icon-name="chip.iconName"
               @click="handleSvgChipClick(index)"
             />

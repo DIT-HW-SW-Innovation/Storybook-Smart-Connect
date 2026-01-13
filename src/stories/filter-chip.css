@@ -5,7 +5,7 @@
   padding: 0.25rem 0.75rem;
   border-radius: 62.4375rem;
   border: 0.0625rem solid #ded9d4;
-  background: #ffffff;
+  background: transparent;
   font-family: 'Rookery New', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -47,9 +47,8 @@
 
 /* Dark Mode */
 .filter-chip--dark {
-  background: #2f323a;
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #fbfbfc;
+  border-color: #393B40;
+  color: #CAC6C2;
 }
 
 
@@ -64,7 +63,7 @@
 }
 
 .filter-chip--dark.filter-chip--hovered {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .filter-chip--selected {
@@ -75,8 +74,8 @@
 
 .filter-chip--dark.filter-chip--selected {
   border-color: transparent;
-  background: rgba(213, 227, 255, 0.2);
-  color: #d6e3ff;
+  background: #D5E3FF;
+  color: #001C3B;
 }
 
 /* Hover states */
@@ -102,4 +101,7 @@
 .filter-chip--svg-text {
   padding: 0.5rem 1rem 0.5rem 0.69rem;
 }
+
+
+
 
